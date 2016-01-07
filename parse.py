@@ -12,7 +12,7 @@ def parse_unescape(s):
 
 def parse_cardwrap(feed):
     count = 0
-    for d in feed.find_all('div', attrs={'class':'WB_cardwrap'}):
+    for d in feed.find_all('div', attrs={'class':'WB_cardwrap', 'action-type':'feed_list_item'}):
         print('-'*50)
         try:
             mid = d['mid']
@@ -34,12 +34,11 @@ def parse_cardwrap(feed):
 
             print('mid:', mid, 'userid:', userid, 'name:', username)
             print('date:', date, 'forward:', forward, 'comment:', comment, 'like:', like)
-            print(text.get_text())
+            print(text.get_text().encode('utf8', 'ignore').decode('utf8'))
             count += 1
         except (KeyError, AttributeError) as e:
             continue
     return count
-
 
 def parse_html(s):
     feed = ''

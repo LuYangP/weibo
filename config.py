@@ -1,1 +1,1 @@
-PHANTOM_JS_PATH = 'c:\\users\\lyp\\bin\\phantomjs.exe'
+PHANTOM_JS_PATH =  '/Users/yangpenglu/opt/bin/phantomjs'
