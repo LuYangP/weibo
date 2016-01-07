@@ -2,9 +2,10 @@ from http.cookiejar import CookieJar, Cookie
 from selenium import webdriver
 from selenium.webdriver.support.expected_conditions import staleness_of
 from selenium.webdriver.support.ui import WebDriverWait
+import config
+import os
 import pickle
 import urllib.parse
-import os
 
 def login(username, password):
     def dict_2_cookiejar(d):
@@ -25,8 +26,7 @@ def login(username, password):
     if os.path.exists('cookies'):
         return dict_2_cookiejar(pickle.load(open('cookies', 'rb')))
 
-    driver = webdriver.PhantomJS(executable_path=
-        '/Users/yangpenglu/opt/bin/phantomjs')
+    driver = webdriver.PhantomJS(executable_path=config.PHANTOM_JS_PATH)
 
     driver.get('http://login.sina.com.cn')
     user = driver.find_element_by_xpath('//input[@id="username"]')
